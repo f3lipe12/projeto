@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros Cadastrados</title>
+    <link rel="stylesheet" href="visualizar.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Livros Cadastrados</h1>
+        <ul id="lista-livros">
+        </ul>
+    </div>
+
+    <script>
+        const livros = JSON.parse(localStorage.getItem("livros")) || [];
+
+        const listaLivros = document.querySelector("#lista-livros");
+
+        livros.forEach(livro => {
+            const novoItem = document.createElement("li");
+            novoItem.innerHTML = `
+                <span>Título: ${livro.titulo}</span>
+                <p>Autor: ${livro.autor}</p>
+                <p>Preço: R$ ${livro.preco}</p>
+                <p>Gênero: ${livro.genero}</p>
+                <p>Estoque: ${livro.estoque}</p>
+                <p>ISBN: ${livro.isbn}</p>
+            `;
+            listaLivros.appendChild(novoItem);
+        });
+    </script>
+
+</body>
+</html>
